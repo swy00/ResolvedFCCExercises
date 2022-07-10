@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 id="title" class="center-text">freeCodeCamp Survey Form</h1>
+        <p id="description" class="center-description">Gracias por tomarte el tiempo de ayudarnos a mejorar</p>
+        </header>
+        <form id="survey-form">
+          
+          <div class="form-group">
+            <label id="name-label">Nombre</label>
+            <input 
+            type="text" 
+            id="name"
+            class="form-control" 
+            required 
+            placeholder="Introduce tu nombre"/>
+          </div>
+          
+          <div class="form-group">
+            <label id="surname-label">Apellido</label>
+            <input 
+            type="text" 
+            id="apellido"
+            class="form-control"  
+            required 
+            placeholder="Introduce tu apellido"/>
+          </div>
+          
+          <div class="form-group">
+            <label id="number-label">Edad</label>
+            <input 
+            type="number" 
+            id="number" min="18"
+            class="form-control"  
+            max="99" 
+            placeholder="Edad"/>
+          </div>
+          
+          <div class="form-group">
+            <label id="email-label">Email</label>
+            <input 
+            type="email" 
+            id="email"
+            class="form-control"  
+            min="18" 
+            max="99" 
+            required 
+            placeholder="Introduce tu email"/>
+          </div>
+          
+          <div class="form-group">
+            <p>Situacion laboral actual?</p>
+            <label>
+              <select id="dropdown" name="sit-laboral" class="form-control" >
+                <option value="">(Selecciona una)</option>
+                <option value="1">Estudiante</option>
+                <option value="2">Full-time Job</option>
+                <option value="3">Full-time Learner</option>
+                <option value="4">Prefiero no responder</option>
+                <option value="5">Otra</option>
+              </select>
+            </label>
+          
+          </div>
+          
+          <div class="form-group">
+            <p>Recomendarías freeCodeCamp a un amigo?</p>
+            <label>
+              <input 
+              value="Definitivamente" 
+              type="radio" 
+              name="recomendacion" 
+              class="inline"  />Definitivamente.
+              </label>
+              
+              <label>
+              <input 
+              value="Capaz"
+              type="radio" 
+              name="recomendacion" 
+              class="inline"  />Capaz.
+              </label>
+              
+              <label>
+              <input 
+              value="No estoy seguro" 
+              type="radio" 
+              name="recomendacion" 
+              class="inline"  />No estoy seguro.
+              </label>
+          </div>
+          
+          <div class="form-group">
+            <p>Cosa favorita de la empresa?</p>
+            <label>
+              <select id="dropdown" name="sit-laboral" required class="form-control" >
+                <option value="">(Selecciona una)</option>
+                <option value="1">Challenges</option>
+                <option value="2">Projets</option>
+                <option value="3">Community</option>
+                <option value="4">Open Source</option>
+                <option value="5">Otra</option>
+              </select>
+            </label>
+          </div>
+          
+          <div class="form-group">
+            <p>Que te gustaría que mejoremos?</p>
+            <label><input 
+                value="Front-end Projects"
+                class="inline" 
+                type="checkbox" 
+                name="mejoras" />Front-end Projects
+            </label>
+            
+            <label><input 
+                value="Back-End Projects" 
+                class="inline" type="checkbox" 
+                name="mejoras" />Back-end Projects
+            </label>
+            
+            <label><input 
+                value="Data Visualization" 
+                class="inline" type="checkbox" 
+                name="mejoras" />Data Visualization
+            </label>
+            
+            <label><input 
+                value="Challenges"
+                class="inline" 
+                type="checkbox" 
+                name="mejoras" />Challenges
+            </label>
+            
+            <label><input 
+                value="Videos" 
+                class="inline" 
+                type="checkbox" 
+                name="mejoras" />Videos
+            </label>
+
+            <label><input 
+                value="Additional courses" 
+                class="inline" 
+                type="checkbox" 
+                name="mejoras" />Additional courses
+            </label>
+           
+          </div>
+          
+          <div class="form-group">
+            <p>Deja tu comentario o sugerencias!</p>
+            <label>
+              <textarea placeholder="Escribí tu comentario o sugerencia"
+              class="input-textarea"></textarea>
+            </label>
+          </div>
+          
+          <div class="form-group">
+            <button type="submit" id="submit" class="submit-button">
+            SUBMIT
+          </button>
+          </div>
+        </form>
+
+    </div>
+
+  </body>
+
+</html>

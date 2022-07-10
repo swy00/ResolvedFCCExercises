@@ -1,0 +1,128 @@
+body{
+    padding:20px;
+    background-image:url(https://images.pexels.com/photos/3415148/pexels-photo-3415148.jpeg?auto=compress&cs=tinysrgb&w=1600);
+    margin:0;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.4;
+    color: black;
+  }
+  
+  form{
+    width: 100%;
+    background-color:rgba(27,27,50,90%);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 720px;
+    padding: 2.5rem 0.625rem;
+    border-radius: 0.25rem;
+    color:white;
+  }
+  .form-group {
+    margin: 0 auto 1.25rem auto;
+    padding: 0.25rem;
+  }
+  
+  .header{
+    padding:2em;
+    margin-bottom:1rem;
+  }
+  .inline{
+    width: unset;
+    margin: 0 0.5em 0 0;
+    vertical-align: middle;
+  }
+  .container{
+    width: 100%;
+    margin: 3.125rem auto 0 auto;
+    max-width: 720px;
+  }
+  
+  .center-text{
+    text-align: center;
+  }
+  .center-description{
+    text-align: center;
+  }
+  .form-control{
+    display: block;
+    width: 95%;
+    height: 2rem;
+    padding: 0.3rem 1rem;
+    color:white;
+    background-color:#0a0a23;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+  }
+  .form-group {
+    margin: 0 auto 1.25rem auto;
+    padding: 0.25rem;
+  }
+  
+  h1 {
+    font-weight: 400;
+    line-height: 1.2;
+  }
+  
+  p {
+    font-size: 1.125rem;
+  }
+  
+  h1,
+  p {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  label {
+    display: flex;
+    align-items: center;
+    font-size: 1.325rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .inline {
+    display: inline-block;
+    margin-right: 0.625rem;
+    min-height: 1.25rem;
+    min-width: 1.25rem;
+  }
+  
+  .input-textarea {
+    min-height: 120px;
+    width: 100%;
+    padding: 0.625rem;
+    resize: vertical;
+  }
+  
+  .submit-button {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: black;
+    color: inherit;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  
+  div {
+      display: block;
+  }
+  
+  input,
+  button,
+  select,
+  textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+  select{
+    font-size:1.1rem
+  }
