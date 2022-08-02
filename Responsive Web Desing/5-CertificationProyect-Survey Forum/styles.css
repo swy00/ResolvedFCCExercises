@@ -12,7 +12,7 @@ body{
     color: black;
   }
   
-  form{
+form{
     width: 100%;
     background-color:rgba(27,27,50,90%);
     margin-left: auto;
@@ -22,33 +22,33 @@ body{
     border-radius: 0.25rem;
     color:white;
   }
-  .form-group {
+.form-group {
     margin: 0 auto 1.25rem auto;
     padding: 0.25rem;
   }
   
-  .header{
+.header{
     padding:2em;
     margin-bottom:1rem;
   }
-  .inline{
+.inline{
     width: unset;
     margin: 0 0.5em 0 0;
     vertical-align: middle;
   }
-  .container{
+.container{
     width: 100%;
     margin: 3.125rem auto 0 auto;
     max-width: 720px;
   }
   
-  .center-text{
+.center-text{
     text-align: center;
   }
-  .center-description{
+.center-description{
     text-align: center;
   }
-  .form-control{
+.form-control{
     display: block;
     width: 95%;
     height: 2rem;
@@ -59,48 +59,48 @@ body{
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
   }
-  .form-group {
+.form-group {
     margin: 0 auto 1.25rem auto;
     padding: 0.25rem;
   }
   
-  h1 {
+h1 {
     font-weight: 400;
     line-height: 1.2;
   }
   
-  p {
+p {
     font-size: 1.125rem;
   }
   
-  h1,
+h1,
   p {
     margin-top: 0;
     margin-bottom: 0.5rem;
   }
   
-  label {
+label {
     display: flex;
     align-items: center;
     font-size: 1.325rem;
     margin-bottom: 0.5rem;
   }
   
-  .inline {
+.inline {
     display: inline-block;
     margin-right: 0.625rem;
     min-height: 1.25rem;
     min-width: 1.25rem;
   }
   
-  .input-textarea {
+.input-textarea {
     min-height: 120px;
     width: 100%;
     padding: 0.625rem;
     resize: vertical;
   }
   
-  .submit-button {
+.submit-button {
     display: block;
     width: 100%;
     padding: 1rem;
@@ -110,19 +110,20 @@ body{
     cursor: pointer;
   }
   
-  div {
+div {
       display: block;
   }
   
-  input,
-  button,
-  select,
-  textarea {
+input,
+button,
+select,
+textarea {
     margin: 0;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
   }
+
   select{
     font-size:1.1rem
   }
