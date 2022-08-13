@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous"/>
+    <title>Product Landing Page</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header id="header">
+            <div class="logo">
+                <img id="header-img" src="//cdn.shopify.com/s/files/1/0540/8666/4371/files/holstein.violins-logo.png?v=1617760380">
+            </div>
+            <nav id="nav-bar">
+                <ul>
+                    <li>
+                    <a class="nav-link" href="#features">FEATURES</a>
+                    </li>
+                    <li>
+                    <a class="nav-link" href="#how-it-works">HOW IT WORKS</a>
+                    </li>
+                    <li>
+                    <a class="nav-link" href="#features">PRICES</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <div class="container">
+          
+            <section id="features">
+                <div class="grid">
+                    <div class="icon"><i class="fa fa-3x fa-fire"></i></div>
+                    <div class="desc">
+                        <h2>Premium Materials</h2>
+                        <p>
+                            Our products use the best materials of the market.
+                            This will increase the longevity of your purchase.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="grid">
+                    <div class="icon"><i class="fa-solid  fa-3x fa-truck-fast"></i></div>
+                    <div class="desc">
+                        <h2>Fast Shipping</h2>
+                        <p>
+                            We make sure you recieve your product as soon as we can. We also provide free returns if you are not
+                            satisfied.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="grid">
+                    <div class="icon"><i class="fa-solid fa-3x fa-handshake"></i></div>
+                    <div class="desc">
+                        <h2>Quality Assurance</h2>
+                        <p>
+                            For every purchase you make, we will ensure there are no damages
+                            or faults.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="how-it-works">
+                <iframe
+                id="video"
+                width="560" 
+                height="315" 
+                src="https://www.youtube.com/embed/oRCc78zjBOE" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
+            </section>
+            
+            <section id="pricing">
+                <div class="product" id="tenor">
+                    <div class="level">Holstein Traditional Violins</div>
+                    <h2>$1489.00</h2>
+                    <ol>
+                        <li>Top: Select European Spruce</li>
+                        <li>Back & Ribs: Select European Maple</li>
+                        <li>Varnish: Hand-applied oil varnish</li>
+                        <li>Fingerboard: Fine Ebony</li>
+                    </ol>
+                    <button class="btn">Select</button>
+                </div>
+                
+                <div class="product" id="bass">
+                    <div class="level">Holstein Workshop Violins</div>
+                    <h2>$2649.00</h2>
+                    <ol>
+                        <li>Top: Select European Spruce</li>
+                        <li>Back & Ribs: Select European Maple</li>
+                        <li>Varnish: Hand-applied oil varnish</li>
+                        <li>Fingerboard: Fine Ebony</li>
+                    </ol>
+                    <button class="btn">Select</button>
+                </div>
+                
+                <div class="product" id="valve">
+                    <div class="level">Holstein Bench Violins</div>
+                    <h2>$3900.00</h2>
+                    <ol>
+                        <li>Top: Select European Spruce</li>
+                        <li>Back & Ribs: Select European Maple</li>
+                        <li>Varnish: Hand-applied oil varnish</li>
+                        <li>Fingerboard: Fine Ebony</li>
+                    </ol>
+                    <button class="btn">Select</button>
+                </div>
+            </section>
+            
+            <section id="hero">
+        <h2>Contact us!</h2>
+            <form id="form" action="https://www.freecodecamp.com/email-submit">
+            <input name="email" id="email" type="email" placeholder="Enter your email address" required="">
+            <input name="name" id="email" type="text" placeholder="Enter your message" required="">
+            <input id="submit" type="submit" value="Submit" class="btn">
+            </form>
+        </section>
+            <footer>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <span>Copyright 2022, Original Holstin</span>
+        </footer>
+        </div>
+    </div>
+</body>
+</html>
