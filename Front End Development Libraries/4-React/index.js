@@ -374,10 +374,8 @@ class TypesOfFood extends React.Component {
     return (
       <div>
         <h1>Types of Food:</h1>
-        {/* Change code below this line */}
-        <Fruits/>
-        <Vegetables/>
-        {/* Change code above this line */}
+        <Fruits2/>
+        <Vegetables3/>
       </div>
     );
   }
@@ -436,15 +434,220 @@ Then access this prop in the CurrentDate component, showing its value within the
 Note that for prop values to be evaluated as JavaScript, they must be enclosed in curly brackets, for instance date={Date()}. */
 
 
+const CurrentDate = (props) => {
+  return (
+    <div>
+      <p>The current date is: {props.date}</p>
+    </div>
+  );
+};
+
+class Calendar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h3>What date is it?</h3>
+        <CurrentDate date={Date()} />
+      </div>
+    );
+  }
+};
+
+/* 
+Pass an Array as Props
+The last challenge demonstrated how to pass information from a parent component to a child component as props or properties. 
+This challenge looks at how arrays can be passed as props. To pass an array to a JSX element, it must be treated as JavaScript and wrapped in curly braces.
+
+<ParentComponent>
+  <ChildComponent colors={["green", "blue", "red"]} />
+</ParentComponent>
+The child component then has access to the array property colors. 
+Array methods such as join() can be used when accessing the property. const ChildComponent = (props) => <p>{props.colors.join(', ')}</p> 
+This will join all colors array items into a comma separated string and produce: <p>green, blue, red</p> Later, we will learn about other common methods to 
+render arrays of data in React.
+
+There are List and ToDo components in the code editor. When rendering each List from the ToDo component, pass in a tasks 
+property assigned to an array of to-do tasks, for example ["walk dog", "workout"]. Then access this tasks array in the List component, showing its value 
+within the p element. Use join(", ") to display the props.tasksarray in the p element as a comma separated list. 
+Today's list should have at least 2 tasks and tomorrow's should have at least 3 tasks. */
+
+const List = (props) => {
+  return <p>{props.tasks.join(", ")}</p>;
+};
+
+class ToDo extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h1>To Do Lists</h1>
+        <h2>Today</h2>
+        <List tasks={["walk dog", "workout"]}/>
+        <h2>Tomorrow</h2>
+        <List tasks={["sleep", "eat","workout"]}/>
+      </div>
+    );
+  }
+};
+
+/*
+Use Default Props
+React also has an option to set default props. You can assign default props to a component as a property on the component 
+itself and React assigns the default prop if necessary. This allows you to specify what a prop value should be if no value is explicitly provided. 
+For example, if you declare MyComponent.defaultProps = { location: 'San Francisco' }, you have defined a location prop that's set to the string 
+San Francisco, unless you specify otherwise. React assigns default props if props are undefined, but if you pass null as the value for a prop, it will remain null.
+
+The code editor shows a ShoppingCart component. Define default props on this component which specify a prop items with a value of 0.
+
+ */
 
 
+const ShoppingCart = (props) => {
+  return (
+    <div>
+      <h1>Shopping Cart Component</h1>
+    </div>
+  )
+};
 
+ShoppingCart.defaultProps={ items:0 }
 
+/*
+Override Default Props
+The ability to set default props is a useful feature in React. The way to override the default props is to explicitly set the prop values for a component.
 
+The ShoppingCart component now renders a child component Items. This Items component has a default prop quantity set to the integer 0. 
+Override the default prop by passing in a value of 10 for quantity.
 
+Note: Remember that the syntax to add a prop to a component looks similar to how you add HTML attributes. 
+However, since the value for quantity is an integer, it won't go in quotes but it should be wrapped in curly braces. 
+For example, {100}. This syntax tells JSX to interpret the value within the braces directly as JavaScript. */
 
+const Items = (props) => {
+  return <h1>Current Quantity of Items in Cart: {props.quantity}</h1>
+}
 
+Items.defaultProps = {
+  quantity: 0
+}
+class ShoppingCart2 extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <Items quantity={10}/>
+  }
+};
 
+/*
+Use PropTypes to Define the Props You Expect
+React provides useful type-checking features to verify that components receive props of the correct type. 
+For example, your application makes an API call to retrieve data that you expect to be in an array, which is then passed to a component as a prop. 
+You can set propTypes on your component to require the data to be of type array. This will throw a useful warning when the data is of any other type.
 
+It's considered a best practice to set propTypes when you know the type of a prop ahead of time. 
+You can define a propTypes property for a component in the same way you defined defaultProps. 
+Doing this will check that props of a given key are present with a given type. Here's an example to require the type function for a prop called handleClick:
 
+MyComponent.propTypes = { handleClick: PropTypes.func.isRequired }
+In the example above, the PropTypes.func part checks that handleClick is a function. 
+Adding isRequired tells React that handleClick is a required property for that component. 
+You will see a warning if that prop isn't provided. Also notice that func represents function. 
+Among the seven JavaScript primitive types, function and boolean (written as bool) are the only two that use unusual spelling. 
+In addition to the primitive types, there are other types available. For example, you can check that a prop is a React element. 
+Please refer to the documentation for all of the options.
+
+Note: As of React v15.5.0, PropTypes is imported independently from React, like this: import PropTypes from 'prop-types';
+
+Define propTypes for the Items component to require quantity as a prop and verify that it is of type number.
+
+ */
+
+//DOCUMENTACION DE PROPTYPES
+
+//https://reactjs.org/docs/typechecking-with-proptypes.html#proptypes
+
+const Items = (props) => {
+  return <h1>Current Quantity of Items in Cart: {props.quantity}</h1>
+};
+
+Items.propTypes={quantity: PropTypes.number.isRequired}
+
+Items.defaultProps = {
+  quantity: 0
+};
+
+class ShoppingCart3 extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <Items />
+  }
+};
+
+/*
+Access Props Using this.props
+The last several challenges covered the basic ways to pass props to child components. 
+But what if the child component that you're passing a prop to is an ES6 class component, rather than a stateless functional component? 
+The ES6 class component uses a slightly different convention to access props.
+
+Anytime you refer to a class component within itself, you use the this keyword. 
+To access props within a class component, you preface the code that you use to access it with this. 
+For example, if an ES6 class component has a prop called data, you write {this.props.data} in JSX.
+
+Render an instance of the Welcome component in the parent component App. Here, give Welcome a prop of name and assign it a value of a string. 
+Within the child, Welcome, access the name prop within the strong tags. */
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
+  render() {
+    return (
+        <div>
+            <Welcome name={"Francisco"} />
+        </div>
+    );
+  }
+};
+class Welcome extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
+  render() {
+    return (
+        <div>
+          <p>Hello, <strong>{this.props.name}</strong>!</p>
+        </div>
+    );
+  }
+};
+
+/*
+Review Using Props with Stateless Functional Components
+Except for the last challenge, you've been passing props to stateless functional components. These components act like pure functions. 
+They accept props as input and return the same view every time they are passed the same props. 
+You may be wondering what state is, and the next challenge will cover it in more detail. Before that, here's a review of the terminology for components.
+
+A stateless functional component is any function you write which accepts props and returns JSX. 
+A stateless component, on the other hand, is a class that extends React.Component, but does not use internal state (covered in the next challenge). 
+Finally, a stateful component is a class component that does maintain its own internal state. You may see stateful components referred to simply as components or 
+React components.
+
+A common pattern is to try to minimize statefulness and to create stateless functional components wherever possible. 
+This helps contain your state management to a specific area of your application. In turn, this improves development and maintenance of your app by 
+making it easier to follow how changes to state affect its behavior.
+
+The code editor has a CampSite component that renders a Camper component as a child. Define the Camper component and assign it 
+default props of { name: 'CamperBot' }. Inside the Camper component, render any code that you want, but make sure to have one p element that 
+includes only the name value that is passed in as a prop. Finally, define propTypes on the Camper component to require name to be provided as a 
+prop and verify that it is of type string. */
 
