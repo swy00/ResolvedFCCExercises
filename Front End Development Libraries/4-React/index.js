@@ -857,6 +857,167 @@ Remember that the method you pass to the onClick handler needs curly braces beca
 
 Once you complete the above steps you should be able to click the button and see You clicked!. */
 
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: "Hello"
+    };
+    // Change code below this line
+    this.handleClick = this.handleClick.bind(this);
+    // Change code above this line
+  }
+  handleClick() {
+    this.setState({
+      text: "You clicked!"
+    });
+  }
+  render() {
+    return (
+      <div>
+        { /* Change code below this line */ }
+        <button onClick={this.handleClick}>Click Me</button>
+        { /* Change code above this line */ }
+        <h1>{this.state.text}</h1>
+      </div>
+    );
+  }
+};
+
+
+/*
+Use State to Toggle an Element
+Sometimes you might need to know the previous state when updating the state. However, state updates may be asynchronous - this means React may batch multiple setState() calls into a single update. 
+This means you can't rely on the previous value of this.state or this.props when calculating the next value. So, you should not use code like this:
+
+this.setState({
+  counter: this.state.counter + this.props.increment
+});
+Instead, you should pass setState a function that allows you to access state and props. Using a function with setState guarantees you are working with the most current values of state and props. 
+This means that the above should be rewritten as:
+
+this.setState((state, props) => ({
+  counter: state.counter + props.increment
+}));
+You can also use a form without props if you need only the state:
+
+this.setState(state => ({
+  counter: state.counter + 1
+}));
+Note that you have to wrap the object literal in parentheses, otherwise JavaScript thinks it's a block of code.
+
+MyComponent has a visibility property which is initialized to false. The render method returns one view if the value of visibility is true, and a different view if it is false.
+
+Currently, there is no way of updating the visibility property in the component's state. The value should toggle back and forth between true and false. 
+There is a click handler on the button which triggers a class method called toggleVisibility().
+ Pass a function to setState to define this method so that the state of visibility toggles to the opposite value when the method is called. If visibility is false, the method sets it to true, and vice versa.
+
+Finally, click the button to see the conditional rendering of the component based on its state.
+
+Hint: Don't forget to bind the this keyword to the method in the constructor! */
+
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visibility: false
+    };
+    // Change code below this line
+    this.toggleVisibility = this.toggleVisibility.bind(this);
+    // Change code above this line
+  }
+  // Change code below this line
+toggleVisibility(){
+  this.setState(
+    function(state){
+      if(state.visibility==false){
+        return {visibility:true}
+      }else (state.visibility==true);{
+        return {visibility:false}
+      }
+    });
+}
+  // Change code above this line
+  render() {
+    if (this.state.visibility) {
+      return (
+        <div>
+          <button onClick={this.toggleVisibility}>Click Me</button>
+          <h1>Now you see me!</h1>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <button onClick={this.toggleVisibility}>Click Me</button>
+        </div>
+      );
+    }
+  }
+}
+
+/*
+Write a Simple Counter
+You can design a more complex stateful component by combining the concepts covered so far. 
+These include initializing state, writing methods that set state, and assigning click handlers to trigger these methods.
+
+The Counter component keeps track of a count value in state. There are two buttons which call methods increment() and decrement(). 
+Write these methods so the counter value is incremented or decremented by 1 when the appropriate button is clicked. 
+Also, create a reset() method so when the reset button is clicked, the count is set to 0.
+
+Note: Make sure you don't modify the classNames of the buttons. Also, remember to add the necessary bindings for the newly-created methods in the constructor. */
+
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+    // Change code below this line
+    this.increment = this.increment.bind(this);
+    this.decrement = this.decrement.bind(this);
+    this.reset = this.reset.bind(this);
+    // Change code above this line
+  }
+  // Change code below this line
+reset() {
+    this.setState({
+      count: 0
+    });
+  }
+
+increment() {
+        this.setState(state=>({
+          count:state.count+1
+        }));
+  }         
+  
+
+decrement(){
+          this.setState(state=>({
+          count:state.count-1
+        }));
+}
+  // Change code above this line
+  render() {
+    return (
+      <div>
+        <button className='inc' onClick={this.increment}>Increment!</button>
+        <button className='dec' onClick={this.decrement}>Decrement!</button>
+        <button className='reset' onClick={this.reset}>Reset</button>
+        <h1>Current Count: {this.state.count}</h1>
+      </div>
+    );
+  }
+};
+
+
+
+
+
+
+
 
 
 
