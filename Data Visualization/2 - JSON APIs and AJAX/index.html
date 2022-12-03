@@ -309,47 +309,470 @@ On the right, click the Get Message button to load the freeCodeCamp Cat Photo AP
 
 The first and last character you see in the JSON data are square brackets [ ].
 This means that the returned data is an array. The second character in the JSON data is a curly { bracket, which starts an object. 
-    Looking closely, you can see that there are three separate objects. The JSON data is an array of three objects, where each object contains information about a cat photo.
+    Looking closely, you can see that there are three separate objects. 
+    The JSON data is an array of three objects, where each object contains information about a cat photo.
 
 You learned earlier that objects contain "key-value pairs" that are separated by commas. 
 In the Cat Photo example, the first object has "id":0 where id is a key and 0 is its corresponding value. 
-Similarly, there are keys for imageLink, altText, and codeNames. Each cat photo object has these same keys, but with different values.
+Similarly, there are keys for imageLink, altText, and codeNames. 
+Each cat photo object has these same keys, but with different values.
 
 Another interesting "key-value pair" in the first object is "codeNames":["Juggernaut","Mrs. Wallace","ButterCup"]. 
-Here codeNames is the key and its value is an array of three strings. It's possible to have arrays of objects as well as a key with an array as a value.
+Here codeNames is the key and its value is an array of three strings. 
+It's possible to have arrays of objects as well as a key with an array as a value.
 
-Remember how to access data in arrays and objects. Arrays use bracket notation to access a specific index of an item. 
+Remember how to access data in arrays and objects. 
+Arrays use bracket notation to access a specific index of an item. 
 Objects use either bracket or dot notation to access the value of a given property.
 Here's an example that prints the altText property of the first cat photo - note that the parsed JSON data in the editor is saved in a variable called json:
 
 console.log(json[0].altText);
 The console would display the string A white cat wearing a green helmet shaped melon on its head..
 
-For the cat with the id of 2, print to the console the second value in the codeNames array. You should use bracket and dot notation on the object (which is saved in the variable json) to access the value.
+For the cat with the id of 2, print to the console the second value in the codeNames array. 
+You should use bracket and dot notation on the object (which is saved in the variable json) to access the value.
+-->
+
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    document.getElementById('getMessage').onclick = function(){
+      const req = new XMLHttpRequest();
+      req.open("GET",'/json/cats.json', true);
+      req.send();
+      req.onload=function(){
+        const json = JSON.parse(req.responseText);
+        document.getElementsByClassName('message')[0].innerHTML = JSON.stringify(json);
+        console.log(json[2].codeNames[1])
+      };
+    };
+  });
+</script>
+
+<style>
+  body {
+    text-align: center;
+    font-family: "Helvetica", sans-serif;
+  }
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .box {
+    border-radius: 5px;
+    background-color: #eee;
+    padding: 20px 5px;
+  }
+  button {
+    color: white;
+    background-color: #4791d0;
+    border-radius: 5px;
+    border: 1px solid #4791d0;
+    padding: 5px 10px 8px 10px;
+  }
+  button:hover {
+    background-color: #0F5897;
+    border: 1px solid #0F5897;
+  }
+</style>
+
+<h1>Cat Photo Finder</h1>
+<p class="message box">
+  The message will go here
+</p>
+<p>
+  <button id="getMessage">
+    Get Message
+  </button>
+</p>
+
+
+
+
+<!--
+Convert JSON Data to HTML
+Now that you're getting data from a JSON API, you can display it in the HTML.
+
+You can use a forEach method to loop through the data since the cat photo objects are held in an array. 
+As you get to each item, you can modify the HTML elements.
+
+First, declare an html variable with let html = "";.
+
+Then, loop through the JSON, adding HTML to the variable that wraps the key names in strong tags, followed by the value. 
+When the loop is finished, you render it.
+
+Here's the code that does this:
+
+let html = "";
+json.forEach(function(val) {
+  const keys = Object.keys(val);
+  html += "<div class = 'cat'>";
+  keys.forEach(function(key) {
+    html += "<strong>" + key + "</strong>: " + val[key] + "<br>";
+  });
+  html += "</div><br>";
+});
+Note: For this challenge, you need to add new HTML elements to the page, so you cannot rely on textContent. 
+Instead, you need to use innerHTML, which can make a site vulnerable to cross-site scripting attacks.
+
+Add a forEach method to loop over the JSON data and create the HTML elements to display it.
+
+Here is some example JSON:
+
+[
+  {
+    "id":0,
+      "imageLink":"https://s3.amazonaws.com/freecodecamp/funny-cat.jpg",
+      "altText":"A white cat wearing a green helmet shaped melon on its head. ",
+      "codeNames":[ "Juggernaut", "Mrs. Wallace", "Buttercup"
+    ]
+  }
+]
+-->
+
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    document.getElementById('getMessage').onclick = function(){
+      const req = new XMLHttpRequest();
+      req.open("GET",'/json/cats.json',true);
+      req.send();
+      req.onload = function(){
+        const json = JSON.parse(req.responseText);
+        let html = "";
+        json.forEach(function(val) {
+        const keys = Object.keys(val);
+        html += "<div class = 'cat'>";
+        keys.forEach(function(key) {
+          html += "<strong>" + key + "</strong>: " + val[key] + "<br>";
+        });
+        html += "</div><br>";
+        });
+        document.getElementsByClassName('message')[0].innerHTML = html;
+      };
+    };
+  });
+</script>
+
+<style>
+  body {
+    text-align: center;
+    font-family: "Helvetica", sans-serif;
+  }
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .box {
+    border-radius: 5px;
+    background-color: #eee;
+    padding: 20px 5px;
+  }
+  button {
+    color: white;
+    background-color: #4791d0;
+    border-radius: 5px;
+    border: 1px solid #4791d0;
+    padding: 5px 10px 8px 10px;
+  }
+  button:hover {
+    background-color: #0F5897;
+    border: 1px solid #0F5897;
+  }
+</style>
+
+<h1>Cat Photo Finder</h1>
+<p class="message box">
+  The message will go here
+</p>
+<p>
+  <button id="getMessage">
+    Get Message
+  </button>
+</p>
+
+<!--
+Render Images from Data Sources
+The last few challenges showed that each object in the JSON array contains an imageLink key with a value that is the URL of a cat's image.
+
+When you're looping through these objects, you can use this imageLink property to display this image in an img element.
+
+Here's the code that does this:
+
+html += "<img src = '" + val.imageLink + "' " + "alt='" + val.altText + "'>";
+Add code to use the imageLink and altText properties in an img tag.
+
 -->
 
 
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    document.getElementById('getMessage').onclick = function(){
+      const req=new XMLHttpRequest();
+      req.open("GET",'/json/cats.json',true);
+      req.send();
+      req.onload = function(){
+        const json = JSON.parse(req.responseText);
+        let html = "";
+        json.forEach(function(val) {
+          html += "<div class = 'cat'>";
+          html += "<img src = '" + val.imageLink + "' " + "alt='" + val.altText + "'>";
+          html += "</div><br>";
+        });
+        document.getElementsByClassName('message')[0].innerHTML=html;
+      };
+     };
+  });
+</script>
+
+<style>
+  body {
+    text-align: center;
+    font-family: "Helvetica", sans-serif;
+  }
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .box {
+    border-radius: 5px;
+    background-color: #eee;
+    padding: 20px 5px;
+  }
+  button {
+    color: white;
+    background-color: #4791d0;
+    border-radius: 5px;
+    border: 1px solid #4791d0;
+    padding: 5px 10px 8px 10px;
+  }
+  button:hover {
+    background-color: #0F5897;
+    border: 1px solid #0F5897;
+  }
+</style>
+<h1>Cat Photo Finder</h1>
+<p class="message box">
+  The message will go here
+</p>
+<p>
+  <button id="getMessage">
+    Get Message
+  </button>
+</p>
 
 
+<!--
+Pre-filter JSON to Get the Data You Need
+If you don't want to render every cat photo you get from the freeCodeCamp Cat Photo API, you can pre-filter the JSON before looping through it.
+
+Given that the JSON data is stored in an array, you can use the filter method to filter out the cat whose id key has a value of 1.
+
+Here's the code to do this:
+
+json = json.filter(function(val) {
+  return (val.id !== 1);
+});
+Add code to filter the json data to remove the cat with the id value of 1.
+-->
 
 
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    document.getElementById('getMessage').onclick = function(){
+      const req = new XMLHttpRequest();
+      req.open("GET",'/json/cats.json', true);
+      req.send();
+      req.onload=function(){
+        let json = JSON.parse(req.responseText);
+        let html = "";
+        json = json.filter(function(val) {
+          return (val.id === 1);
+        });
+
+         json.forEach(function(val) {
+           html += "<div class = 'cat'>"
+
+           html += "<img src = '" + val.imageLink + "' " + "alt='" + val.altText + "'>"
+
+           html += "</div>"
+         });
+         document.getElementsByClassName('message')[0].innerHTML = html;
+       };
+     };
+  });
+</script>
+
+<style>
+  body {
+    text-align: center;
+    font-family: "Helvetica", sans-serif;
+  }
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .box {
+    border-radius: 5px;
+    background-color: #eee;
+    padding: 20px 5px;
+  }
+  button {
+    color: white;
+    background-color: #4791d0;
+    border-radius: 5px;
+    border: 1px solid #4791d0;
+    padding: 5px 10px 8px 10px;
+  }
+  button:hover {
+    background-color: #0F5897;
+    border: 1px solid #0F5897;
+  }
+</style>
+
+<h1>Cat Photo Finder</h1>
+<p class="message box">
+  The message will go here
+</p>
+<p>
+  <button id="getMessage">
+    Get Message
+  </button>
+</p>
 
 
+<!--
+Get Geolocation Data to Find A User's GPS Coordinates
+Another cool thing you can do is access your user's current location. 
+Every browser has a built in navigator that can give you this information.
+
+The navigator will get the user's current longitude and latitude.
+
+You will see a prompt to allow or block this site from knowing your current location. 
+The challenge can be completed either way, as long as the code is correct.
+
+By selecting allow, you will see the text on the output phone change to your latitude and longitude.
+
+Here's code that does this:
+
+if (navigator.geolocation){
+  navigator.geolocation.getCurrentPosition(function(position) {
+    document.getElementById('data').innerHTML="latitude: " + position.coords.latitude + "<br>longitude: " + position.coords.longitude;
+  });
+}
+First, it checks if the navigator.geolocation object exists. 
+If it does, the getCurrentPosition method on that object is called, which initiates an asynchronous request for the user's position. 
+If the request is successful, the callback function in the method runs. 
+This function accesses the position object's values for latitude and longitude using dot notation and updates the HTML.
+
+Add the example code inside the script tags to check a user's current location and insert it into the HTML.
+-->
+
+<script>
+  if (navigator.geolocation){
+  navigator.geolocation.getCurrentPosition(function(position) {
+    document.getElementById('data').innerHTML="latitude: " + position.coords.latitude + "<br>longitude: " + position.coords.longitude;
+  });
+}
+</script>
+<h4>You are here:</h4>
+<div id="data">
+
+</div>
+
+<!--
+Post Data with the JavaScript XMLHttpRequest Method
+In the previous examples, you received data from an external resource. 
+You can also send data to an external resource, as long as that resource supports AJAX requests and you know the URL.
+
+JavaScript's XMLHttpRequest method is also used to post data to a server. Here's an example:
+
+const xhr = new XMLHttpRequest();
+xhr.open('POST', url, true);
+xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === 4 && xhr.status === 201){
+    const serverResponse = JSON.parse(xhr.response);
+    document.getElementsByClassName('message')[0].textContent = serverResponse.userName + serverResponse.suffix;
+  }
+};
+const body = JSON.stringify({ userName: userName, suffix: ' loves cats!' });
+xhr.send(body);
+You've seen several of these methods before. 
+Here the open method initializes the request as a POST to the given URL of the external resource, and uses the true Boolean to make it asynchronous. 
+The setRequestHeader method sets the value of an HTTP request header, which contains information about the sender and the request. 
+It must be called after the open method, but before the send method. 
+The two parameters are the name of the header and the value to set as the body of that header. 
+Next, the onreadystatechange event listener handles a change in the state of the request. 
+A readyState of 4 means the operation is complete, and a status of 201 means it was a successful request. 
+The document's HTML can be updated. 
+Finally, the send method sends the request with the body value, which the userName key was given by the user in the input field.
+
+Update the code so it makes a POST request to the API endpoint. 
+Then type your name in the input field and click Send Message. 
+Your AJAX function should replace Reply from Server will be here. with data from the server. 
+Format the response to display your name appended with the text loves cats.
+-->
 
 
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    document.getElementById('sendMessage').onclick = function(){
 
+      const userName = document.getElementById('name').value;
+      const url = 'https://jsonplaceholder.typicode.com/posts';
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', url, true);
+      xhr.setRequestHeader('Content-Type', 'application/json;  charset=UTF-8');
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 201){
+          const serverResponse = JSON.parse(xhr.response);
+          document.getElementsByClassName('message')[0].textContent = serverResponse.userName + serverResponse.suffix;
+        }
+      };
+      const body = JSON.stringify({ userName: userName, suffix: ' loves winter!' });
+      xhr.send(body);
+    };
+  });
+</script>
 
+<style>
+  body {
+    text-align: center;
+    font-family: "Helvetica", sans-serif;
+  }
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .box {
+    border-radius: 5px;
+    background-color: #eee;
+    padding: 20px 5px;
+  }
+  button {
+    color: white;
+    background-color: #4791d0;
+    border-radius: 5px;
+    border: 1px solid #4791d0;
+    padding: 5px 10px 8px 10px;
+  }
+  button:hover {
+    background-color: #0F5897;
+    border: 1px solid #0F5897;
+  }
+</style>
 
-
-
-
-
-
-
-
-
-
-
+<h1>Cat Friends</h1>
+<p class="message box">
+  Reply from Server will be here
+</p>
+<p>
+  <label for="name">Your name:
+    <input type="text" id="name"/>
+  </label>
+  <button id="sendMessage">
+    Send Message
+  </button>
+</p>
 
 
 
