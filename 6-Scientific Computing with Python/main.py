@@ -771,6 +771,81 @@ while True:
 ###35
 #Python Objects
 
+#Data structures
+#The list data hype has some more methods, this are some methods of list objets:
+#list.append(x)  add an item to the end
+#list.extend(x)  extend the list by appending all the items in the given list
+#list.insert(j,x) insert an item at a given position. The first argument is the index of the element before wich to insert.
+#list.remove(x) remove the first item from the list
+#list.pop([x]) remove the item at the given position in the list, and return it. If no index is specified removes and returns the last item
+#in the list.
+
+###36
+#Objects: A Sample Class
+
+class PartyAnimal:
+    x = 0
+    def party(self):
+        self.x = self.x + 2
+        print(self.x)
+
+an = PartyAnimal()
+an.party()
+an.party()
+
+###37
+#Object Lifecycle
+
+#Objets are created,used and discarded
+#We have special blocks of code(methods) that get called
+#-At the momento of the creation (constructor)
+#-At the momento of the destruction(destructor)
+#Constructors are used a lot and Destructors are seldom used
+
+#In object oriented programming (OOP), a constructor in a class is a special
+# block of statements called when an object is created 
+class PartyAnimal:
+    x = 0
+    name = ''
+    def __init__(self, nam):  #Cuando se crea el objeto se ejecuta estas lineas de codigo
+        self.name = nam
+        print(self.name,'constructed')
+    def party(self):
+        self.x = self.x + 1
+        print(self.name,'party count',self.x)
+
+q = PartyAnimal('Quincy')
+m = PartyAnimal('Miya')
+
+q.party()
+m.party()
+q.party()
+
+#Quincy constructed
+#Miya constructed
+#Quincy party count 1
+#Miya party count 1
+#Quincy party count 2
 
 
+###38
+#Objects: Inheritance
+
+#When we make a new class - we can reuse an existing class and INHERIT
+#all the capabilities of an existing class and then add out own little bit to make our new class
+#Another form of store and reuse
+#Write once - reuse many times
+#The new class(child) has all the capabilities of the old class(parent) and then some more
+
+#Definitions
+
+#Class - a template
+#Attribute - A variable within a class
+#Method - A function within a class
+#Object - A particular instance of a class
+#Constructor - Code that runs when an object is created
+#Inheritance - The ability to extend a class to make a new class
+
+###39 
+#Relational Databases and SQLite
 
