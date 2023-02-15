@@ -541,7 +541,7 @@ print(counts)
 #you could do string searches the hard way
 #or use the free sorfware library called BeautifulSoap from crummy.com
 
-import urllib.request, urllib.parse, urllib.error
+import urllib.request, urllib.parse, urllib.error 
 from bs4 import BeautifulSoup
 
 url = input('Enter - ')
@@ -848,4 +848,23 @@ q.party()
 
 ###39 
 #Relational Databases and SQLite
+
+###40
+#Make a Relational Database
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
