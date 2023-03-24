@@ -729,7 +729,7 @@ import urllib.request, urllib.parse, urllib.error
 #En caso de querer importar modulo de otra carpeta, en este caso no funcionó
 #import sys
 #sys.path.insert(1,'path\to\file')
-import twurl
+#import twurl
 import json
 import ssl
 
@@ -747,8 +747,8 @@ while True:
     print('')
     acct = input('Enter Twitter Account:')
     if (len(acct) < 1): break
-    url = twurl.augment(TWITTER_URL,
-                        {'screen_name': acct, 'count': '5'})
+#       url = twurl.augment(TWITTER_URL,
+#                        {'screen_name': acct, 'count': '5'})
     print('Retrieving', url)
     connection = urllib.request.urlopen(url, context=ctx)
     data = connection.read().decode()
@@ -853,6 +853,56 @@ q.party()
 #Make a Relational Database
 #Database Files (tldr-SQL creation)
 
+###41
+#Relational Database Design
+
+#Building a DATA MODEL
+#Dont put the same string data in twice - use a relationship intead
+#When there is one thing in the "real world" there should be one cpy of that thing in the database
+
+###42
+#Representing Relationships in a Relational Database
+
+#Database Normalization (3NF)
+#Do not replicate DATA -reference data- point at data
+#Use integers for keys and for references
+#Add a special "key" column to each table which we will
+#make references to. By convention, many programmers call this column "id"
+
+#Three kind if keys
+#-Primary key - generally an integer auto-increment field
+#- Logical key - what the ourside world uses for lookup
+#-Foreign key - generally an integer key pointing to a row in another talbe
+
+#KEY RULES
+#-Never use your logical key as the primary key
+#-Logical keys can and do change, albeit slowly
+#-Relationships that are based on matching string fileds are less efficient than integers
+
+##FOREIGN KEYS
+#A FK is when a table has a column that contains a key which point to the primary key of another table
+#When all primary keys are integers, then all foreign keys are integers.
+
+###43
+#Relational Databases: Relationship Building
+
+###44
+#Relational Databases: Join Operation
+
+#Relational Power - by removing the replicated data and replacing it with references to a single copy of each
+#bit of data we build a "web" of information that the relational database can read through very quickly -
+#even for a very large amounts of data
+
+#Joining two tables without an ON clause gives all possible combinations of rows
+
+#Example
+
+#select Track.title,                 Genre.name from Track join Genre       on Track.genre_id = Genre.id
+#        What we want to see           The tables that hold the data        How the tables are linked
+
+###44
+# Relational Databases: Many-to-many Relationships
+#        
 
 
 
